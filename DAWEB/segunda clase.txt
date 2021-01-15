@@ -1,0 +1,36 @@
+<?php
+
+class ClasificacionView  {
+
+    public function agregar($list=[]){
+        $str = file_get_contents(
+            STATIC_DIR . "html/artesanias/clasificacion_agregar.html"); 
+        $html = Template($str)->render_regex('LISTADO_CLASIFICACION', $list);
+        print Template('Agregar clasificacion')->show($html);
+    } 
+
+    public function listar($list=[]) {
+        $str = file_get_contents(
+            STATIC_DIR . "html/artesanias/clasificacion_listar.html"); 
+        $html = Template($str)->render_regex('LISTADO_CLASIFICACION', $list);
+        print Template('Listado de clasificacion')->show($html);
+    }
+
+}
+
+?>
+/////////////////////////////////////////////
+public function guardar(){
+       $id          = $_POST['id']?? 0;
+       $descripcion = $_POST['descripcion'];
+       $padre       = $_POST['padre'];
+       //--- validar datos
+
+       //--- asociar al modelo
+       $this->model->id=$id;
+       $this->model->descripcion = $descripcion;
+       $this->model->padre       = $padre;
+       $this->model->save();
+       //--- 
+       HTTPHelper::go("/artesanias/clasificacion/listar");
+    }

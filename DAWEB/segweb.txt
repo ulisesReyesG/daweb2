@@ -1,0 +1,7 @@
+1. sudo apt update
+2. sudo apt install gcc git make wget
+3. git clone https://gitlab.com/akihe/radamsa.git
+4. cd radamsa
+5. make
+6. sudo make install
+7. sudo apt install jq

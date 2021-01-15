@@ -1,0 +1,9 @@
+public function editar($id=0){
+        $sql= "SELECT  A.padre 
+ $sql = "SELECT C.id, C.descripcion, C.padre,
+          if(A.padre=C.id,'selected','') as selected
+         FROM clasificacion as C, ($sql) as A";
+        $clasificacionListado = $this->model->query($sql);
+        $clasificacion = $this->model->getById($id);
+ $this->view->editar($clasificacionListado, $clasificacion);
+    }
